@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "a59b4c9b-4c20-479c-9f78-a5a27f85981d",
+		"name": "Code7_felipe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "GUgRHVtZXIiLCJpYXQiOjE1MTYyMzkwMn0.vYixmKtj7-4somel8wtp-7v1Y1iJ-HZBO9wUgCGjGMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"TITULO\",\r\n    \"text\": \"TEXTO\",\r\n    \"author\": \"AUTOR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shfzdsg3hk.execute-api.us-east-1.amazonaws.com/dev/v1/news/create",
+					"protocol": "https",
+					"host": [
+						"shfzdsg3hk",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"v1",
+						"news",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "GUgRHVtZXIiLCJpYXQiOjE1MTYyMzkwMn0.vYixmKtj7-4somel8wtp-7v1Y1iJ-HZBO9wUgCGjGMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"c21d31b5-81fc-42ec-a9fb-9c86ea3f8848\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shfzdsg3hk.execute-api.us-east-1.amazonaws.com/dev/v1/news/delete",
+					"protocol": "https",
+					"host": [
+						"shfzdsg3hk",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"v1",
+						"news",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "GUgRHVtZXIiLCJpYXQiOjE1MTYyMzkwMn0.vYixmKtj7-4somel8wtp-7v1Y1iJ-HZBO9wUgCGjGMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"c2dcfb28-58de-4af2-bcaf-ec68161533d7\",\r\n    \"title\": \"NOVOTITULO\",\r\n    \"text\": \"NOVOTEXTO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shfzdsg3hk.execute-api.us-east-1.amazonaws.com/dev/v1/news/update",
+					"protocol": "https",
+					"host": [
+						"shfzdsg3hk",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"v1",
+						"news",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "GUgRHVtZXIiLCJpYXQiOjE1MTYyMzkwMn0.vYixmKtj7-4somel8wtp-7v1Y1iJ-HZBO9wUgCGjGMg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://shfzdsg3hk.execute-api.us-east-1.amazonaws.com/dev/v1/news/list",
+					"protocol": "https",
+					"host": [
+						"shfzdsg3hk",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"v1",
+						"news",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SEARCH",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "GUgRHVtZXIiLCJpYXQiOjE1MTYyMzkwMn0.vYixmKtj7-4somel8wtp-7v1Y1iJ-HZBO9wUgCGjGMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"searchBy\": \"PALAVRA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shfzdsg3hk.execute-api.us-east-1.amazonaws.com/dev/v1/news/search",
+					"protocol": "https",
+					"host": [
+						"shfzdsg3hk",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"v1",
+						"news",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

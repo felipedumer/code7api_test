@@ -1,0 +1,10 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "search schema",
+    "required": ["searchBy"],
+    "properties": {
+      "searchBy": { "type": "string", "pattern": "^[a-zA-Z0-9]+$" }
+    }
+  }

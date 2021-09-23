@@ -1,0 +1,117 @@
+service: code7api
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: us-east-1
+  environment:
+    DYNAMODB_TABLE: newsTable
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "Fn::GetAtt": [ newsTable, Arn ]
+  apiGateway:
+    apiKeys:
+      - name: simpleSecurity
+        value: GUgRHVtZXIiLCJpYXQiOjE1MTYyMzkwMn0.vYixmKtj7-4somel8wtp-7v1Y1iJ-HZBO9wUgCGjGMg
+    request:
+      schemas:
+        createSchema:
+          name: createSchema
+          schema: ${file(api_schema/create.json)}
+        updateSchema:
+          name: updateSchema
+          schema: ${file(api_schema/update.json)}
+        deleteSchema:
+          name: deleteSchema
+          schema: ${file(api_schema/delete.json)}
+        searchSchema:
+          name: searchSchema
+          schema: ${file(api_schema/search.json)}
+
+package:
+  individually: true
+  patterns:
+    - '!node_modules/**'
+
+functions:
+  createNews:
+    handler: lambdas/createNews.handler
+    events:
+      - http:
+          method: POST
+          path: /v1/news/create
+          integration: lambda
+          private: true
+          request:
+            schemas:
+              application/json: createSchema
+  updateNews:
+    handler: lambdas/updateNews.handler
+    events:
+      - http:
+          method: PUT
+          path: /v1/news/update
+          integration: lambda
+          private: true
+          request:
+            schemas:
+              application/json: updateSchema
+  deleteNews:
+    handler: lambdas/deleteNews.handler
+    events:
+      - http:
+          method: DELETE
+          path: /v1/news/delete
+          integration: lambda
+          private: true
+          request:
+            schemas:
+              application/json: deleteSchema
+  listNews:
+    handler: lambdas/listNews.handler
+    events:
+      - http:
+          method: GET
+          path: /v1/news/list
+          integration: lambda
+          private: true
+  searchNews:
+    handler: lambdas/searchNews.handler
+    events:
+      - http:
+          method: POST
+          path: /v1/news/search
+          integration: lambda
+          private: true
+          request:
+            schemas:
+              application/json: searchSchema
+
+resources:
+  Resources:
+    newsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: newsTable
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
